@@ -12,15 +12,16 @@ BASEDIR = os.path.abspath(os.path.dirname(__file__))
 app = Flask(__name__)
 app.register_blueprint(board)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + \
-    os.path.join(BASEDIR, 'app.sqlite')
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///" + os.path.join(
+    BASEDIR, "app.sqlite"
+)
 
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.secret_key = 'asodfajsdofijac'
+app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+app.secret_key = "asodfajsdofijac"
 
 db.init_app(app)
-bcrypt = Bcrypt(app)
+bcrypt = Bcrypt(app)  # for password hashing
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     app.run(debug=True)
